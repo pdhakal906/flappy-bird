@@ -63,7 +63,8 @@ window.onload = function () {
   requestAnimationFrame(update);
   setInterval(placePipes, 1500); //every 1.5 seconds
   document.addEventListener("keydown", moveBird);
-  document.addEventListener("click", moveBird);
+  // document.addEventListener("click", moveBird);
+  document.addEventListener("touchstart", moveBird);
 }
 
 function update() {
@@ -149,11 +150,9 @@ function placePipes() {
 function moveBird(e) {
   const element = document.getElementById('board');
 
-  element.addEventListener('click', function (event) {
-    if (event.button === 0) {
-      customMove()
-    }
-  });
+  element.addEventListener('touchstart',
+    customMove()
+  );
   if (e.code == "Space" || e.code == "ArrowUp" || e.code == "KeyX") {
     //jump
     customMove()
